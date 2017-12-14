@@ -1,6 +1,7 @@
 package com.github.bhop.cats
 
 import com.github.bhop.cats.typeclass.Json._
+import com.github.bhop.cats.typeclass.Printable
 
 case class Cat(name: String, age: Int, color: String)
 
@@ -14,5 +15,8 @@ object Cat {
         "age"   -> JsNumber(cat.age),
         "color" -> JsString(cat.color)
       ))
+
+    implicit val catPrintable: Printable[Cat] =
+      cat => s"${cat.name} is a ${cat.age} year-old ${cat.color} cat."
   }
 }
