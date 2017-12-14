@@ -18,5 +18,13 @@ object Cat {
 
     implicit val catPrintable: Printable[Cat] =
       cat => s"${cat.name} is a ${cat.age} year-old ${cat.color} cat."
+
+    import cats.Show
+    implicit val catShow: Show[Cat] =
+      Show.show(cat => s"${cat.name} is a ${cat.age} year-old ${cat.color} cat.")
+
+    import cats.Eq
+    implicit val catEq: Eq[Cat] =
+      Eq.instance(_ == _)
   }
 }
