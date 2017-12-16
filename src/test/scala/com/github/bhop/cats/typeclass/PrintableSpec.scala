@@ -22,5 +22,14 @@ class PrintableSpec extends WordSpec with Matchers {
       import Cat.Instances._
       Cat("Max", 6, "white").format should be("Max is a 6 year-old white cat.")
     }
+
+    "format box instance" in {
+      case class Box[A](value: A)
+
+      implicit def boxPrintable[A](implicit p: Printable[A]): Printable[Box[A]] =
+        p.contramap(_.value)
+
+      Box(value = true).format should be("yes")
+    }
   }
 }

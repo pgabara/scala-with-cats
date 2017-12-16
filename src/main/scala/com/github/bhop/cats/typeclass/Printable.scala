@@ -1,7 +1,11 @@
 package com.github.bhop.cats.typeclass
 
 trait Printable[A] {
+
   def format(a: A): String
+
+  def contramap[B](f: B => A): Printable[B] =
+    b => format(f(b))
 }
 
 object Printable {
@@ -22,6 +26,12 @@ object Printable {
       a => a
 
     implicit val intPrintable: Printable[Int] =
-      _.toString
+      stringPrintable.contramap[Int](_.toString)
+
+    implicit val booleanPrintable: Printable[Boolean] =
+      stringPrintable.contramap[Boolean] {
+        case true  => "yes"
+        case false => "no"
+      }
   }
 }
