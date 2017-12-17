@@ -1,6 +1,6 @@
 package com.github.bhop.cats.typeclass
 
-import com.github.bhop.cats.Cat
+import com.github.bhop.cats.{Box, Cat}
 import org.scalatest.{Matchers, WordSpec}
 
 class PrintableSpec extends WordSpec with Matchers {
@@ -24,11 +24,7 @@ class PrintableSpec extends WordSpec with Matchers {
     }
 
     "format box instance" in {
-      case class Box[A](value: A)
-
-      implicit def boxPrintable[A](implicit p: Printable[A]): Printable[Box[A]] =
-        p.contramap(_.value)
-
+      import Box.Instances._
       Box(value = true).format should be("yes")
     }
   }
