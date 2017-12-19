@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/bhop/sparxer.svg?branch=master)](https://travis-ci.org/bhop/sparxer)
-[![codecov](https://codecov.io/gh/bhop/sparxer/branch/master/graph/badge.svg)](https://codecov.io/gh/bhop/sparxer)
+[![Build Status](https://travis-ci.org/bhop/scala-with-cats.svg?branch=master)](https://travis-ci.org/bhop/scala-with-cats)
+[![codecov](https://codecov.io/gh/bhop/sparxer/branch/master/graph/badge.svg)](https://codecov.io/gh/bhop/scala-with-cats)
 
 # Scala with Cats
 
