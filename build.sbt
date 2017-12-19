@@ -1,3 +1,5 @@
+import scoverage.ScoverageKeys._
+
 name := "scala-with-cats"
 version := "1.0.0"
 
@@ -13,6 +15,9 @@ scalacOptions ++= Seq(
   "-Xfatal-warnings",
   "-Ypartial-unification"
 )
+
+coverageMinimum       := 80
+coverageFailOnMinimum := true
 
 libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core" % "1.0.0-MF",
