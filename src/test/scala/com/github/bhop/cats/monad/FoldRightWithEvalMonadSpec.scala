@@ -2,9 +2,9 @@ package com.github.bhop.cats.monad
 
 import org.scalatest.{Matchers, WordSpec}
 
-class EvalFoldRightSpec extends WordSpec with Matchers {
+class FoldRightWithEvalMonadSpec extends WordSpec with Matchers {
 
-  import EvalFoldRight._
+  import FoldRightWithEvalMonad._
 
   "An Eval fold right" should {
 

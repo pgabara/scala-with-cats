@@ -26,6 +26,7 @@ class PrintableSpec extends WordSpec with Matchers {
     "format box instance" in {
       import Box.Instances._
       Box(value = true).format should be("yes")
+      Box(value = false).format should be("no")
     }
   }
 }

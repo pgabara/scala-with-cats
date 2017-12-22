@@ -1,6 +1,6 @@
 package com.github.bhop.cats.monad
 
-object EvalFoldRight {
+object FoldRightWithEvalMonad {
 
   import cats.Eval
 
