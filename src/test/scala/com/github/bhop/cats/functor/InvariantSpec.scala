@@ -12,7 +12,6 @@ class InvariantSpec extends WordSpec with Matchers {
       import cats.Monoid
       import cats.syntax.invariant._
       import cats.syntax.semigroup._
-      import cats.instances.monoid._
       import cats.instances.long._
       implicit val dateMonoid: Monoid[Date] = Monoid[Long].imap[Date](new Date(_))(_.getTime)
       dateMonoid.empty should be(new Date(0))
