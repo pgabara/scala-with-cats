@@ -20,7 +20,7 @@ coverageMinimum       := 80
 coverageFailOnMinimum := true
 
 libraryDependencies ++= Seq(
-  "org.typelevel" %% "cats-core" % "1.0.0-RC2",
+  "org.typelevel" %% "cats-core" % "1.0.0",
   "org.scalatest" %% "scalatest" % "3.0.1"      % "test"
 )
 
