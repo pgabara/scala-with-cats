@@ -1,14 +1,51 @@
 package com.github.bhop.cats.casestudies.validation.v2
 
-import cats.data.NonEmptyList
 import org.scalatest.{Matchers, WordSpec}
 
-import cats.syntax.validated._
+import cats.data.NonEmptyList
+
 import cats.syntax.apply._
+import cats.syntax.validated._
 
 class CheckSpec extends WordSpec with Matchers {
 
   "A Check" when {
+
+    "map" should {
+
+      import cats.instances.string._
+      val check = Check(Predicate.lift[String, Int](error = "Boom!", func = _ > 5))
+
+      "transform valid value" in {
+        check.map(_.toString)(10) should be("10".valid)
+      }
+
+      "ignore if invalid value" in {
+        check.map(_.toString)(1) should be("Boom!".invalid)
+      }
+    }
+
+    "a number should be greater than 10 or even" should {
+
+      val longerThan10 = Predicate.lift[Errors, Int](
+        error = error("Must be longer than 10 characters"), func = _ > 10)
+
+      val isEven = Predicate.lift[Errors, Int](
+        error = error("Number mus be even"), func = _ % 2 == 0)
+
+      val check = Check(longerThan10 or isEven)
+
+      "be valid for correct numbers" in {
+        check(4) should be(4.valid)
+        check(13) should be(13.valid)
+        check(16) should be(16.valid)
+      }
+
+      "be invalid for incorrect numbers" in {
+        check(3) should be(NonEmptyList.fromListUnsafe(
+          List("Must be longer than 10 characters", "Number mus be even")).invalid)
+      }
+    }
 
     "a username must contain at least four characters and consist entirely of alphanumeric characters" should {
 

@@ -48,12 +48,12 @@ class MapReduceSpec extends WordSpec with Matchers with ScalaFutures {
 
       "sum up all elements providing a vector of numbers and identity function" in {
         import cats.instances.int._
-        parallelFoldMap(Vector(1, 2, 3, 4))(identity).futureValue should be(10)
+        parallelFoldMap2(Vector(1, 2, 3, 4))(identity).futureValue should be(10)
       }
 
       "return 0 providing an empty vector of numbers with identity function" in {
         import cats.instances.int._
-        parallelFoldMap(Vector.empty[Int])(identity).futureValue should be(0)
+        parallelFoldMap2(Vector.empty[Int])(identity).futureValue should be(0)
       }
     }
   }
